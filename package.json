@@ -7,8 +7,18 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run lint && npm run typecheck && npm run build",
     "preview": "vite preview",
-    "deploy": "npx vercel --prod"
+    "deploy": "npx vercel --prod",
+    "docker:build": "docker build -t ntphong04102k4/portfolio-mobile:latest .",
+    "docker:run": "docker run -d --name portfolio-mobile -p 3000:80 ntphong04102k4/portfolio-mobile:latest",
+    "docker:stop": "docker stop portfolio-mobile && docker rm portfolio-mobile",
+    "docker:up": "docker compose up -d portfolio",
+    "docker:up:dev": "docker compose up portfolio-dev",
+    "docker:down": "docker compose down",
+    "clean": "npx rimraf dist node_modules"
   },
   "dependencies": {
     "chart.js": "^4.4.7",
