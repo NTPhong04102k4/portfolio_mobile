@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import type { Project } from './data/projects';
 
 type ProjectCardProps = {
