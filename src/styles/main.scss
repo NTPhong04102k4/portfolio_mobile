@@ -1,4 +1,14 @@
 @use 'variables';
 @use 'layout';
 @use 'typography';
-@use 'portfolio';
+
+@use 'components/animations';
+@use 'components/utilities';
+@use 'components/header';
+@use 'components/user-profile';
+@use 'components/project-card';
+@use 'components/experience';
+@use 'components/skills-radar';
+@use 'components/ai-assistant';
+@use 'components/blog';
+@use 'components/leftovers';

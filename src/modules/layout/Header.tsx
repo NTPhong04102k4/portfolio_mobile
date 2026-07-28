@@ -1,5 +1,4 @@
 import { useI18n } from '@/i18n/I18nContext';
-import { useTheme } from '@/theme/ThemeContext';
 
 import type { SectionId } from './PageLayout';
 
@@ -9,8 +8,7 @@ type HeaderProps = {
 };
 
 export function Header({ activeSection = 'about', onSelectSection }: HeaderProps) {
-  const { theme, toggleTheme } = useTheme();
-  const { lang, setLang, t } = useI18n();
+  const { t } = useI18n();
 
   const navItems: { id: SectionId; label: string; icon: string }[] = [
     { id: 'about', label: t('nav.about'), icon: '👤' },

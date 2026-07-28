@@ -1,0 +1,202 @@
+@use '../variables' as *;
+
+/* Option slider (travel cards style) */
+
+.option-slider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  background: #6a8bff;
+  overflow: hidden;
+  border-radius: $radius-lg;
+}
+
+.option-slider__viewport {
+  width: 100%;
+  max-width: 960px;
+  overflow: visible;
+}
+
+.option-slider__track {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-slider__card {
+  position: absolute;
+  width: 260px;
+  height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: transparent;
+  transition:
+    transform 0.4s ease,
+    opacity 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  filter: grayscale(0.2);
+}
+
+.option-slider__card.is-active {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
+  filter: grayscale(0);
+  transform: translateY(-6px) scale(1.02);
+}
+
+.option-slider__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.option-slider__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%);
+}
+
+.option-slider__content {
+  position: absolute;
+  inset-inline: 18px;
+  bottom: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+.option-slider__city {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+.option-slider__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.option-slider__desc {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin: 0 0 10px;
+}
+
+.option-slider__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: #111827;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.option-slider__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+
+  &:hover {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+.option-slider__arrow--left {
+  margin-right: 16px;
+}
+
+.option-slider__arrow--right {
+  margin-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .option-slider__track {
+    height: 300px;
+  }
+
+  .option-slider__card {
+    width: 220px;
+    height: 300px;
+  }
+}
+
+.badge-latest {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.25));
+  border: 1px solid rgba(236, 72, 153, 0.6);
+  color: #f472b6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+/* Primary / Secondary Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: $radius-pill;
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
+  }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: $radius-pill;
+  background: var(--item-bg);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: 1px solid var(--item-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--card-bg);
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: translateY(-2px);
+  }
+}
