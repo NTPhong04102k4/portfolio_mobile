@@ -1,15 +1,15 @@
 # ========================================
 # Stage 1: Build
 # ========================================
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
-# Copy package files first for better Docker layer caching
-COPY package.json package-lock.json ./
+# Copy package.json only (ignore Windows lockfile)
+COPY package.json ./
 
-# Install dependencies
-RUN npm ci --frozen-lockfile
+# Install dependencies fresh for Linux
+RUN npm install
 
 # Copy source code
 COPY . .
