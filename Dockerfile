@@ -6,10 +6,10 @@ FROM node:20-alpine AS build
 WORKDIR /app
 
 # Copy package files first for better Docker layer caching
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm ci --frozen-lockfile
+RUN npm install
 
 # Copy source code
 COPY . .
