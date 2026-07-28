@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { cvV1Data } from '@/content/cv_v1.parsed';
 import { NativeCodeShowcase } from '@/modules/skills/NativeCodeShowCase';
 

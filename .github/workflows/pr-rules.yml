@@ -1,0 +1,36 @@
+name: PR Branch Rules
+
+on:
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  validate-branch:
+    name: 🔒 Validate Branch Rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch rules
+        run: |
+          BASE="${{ github.base_ref }}"
+          HEAD="${{ github.head_ref }}"
+
+          echo "📋 PR: $HEAD → $BASE"
+
+          # Rule 1: Only 'dev' branch can merge into 'main'
+          if [[ "$BASE" == "main" && "$HEAD" != "dev" ]]; then
+            echo "❌ ERROR: Only 'dev' branch can be merged into 'main'."
+            echo "   Current PR: '$HEAD' → 'main'"
+            echo "   Please merge '$HEAD' → 'dev' first, then 'dev' → 'main'."
+            exit 1
+          fi
+
+          # Rule 2: 'main' branch should not merge into 'dev'
+          if [[ "$BASE" == "dev" && "$HEAD" == "main" ]]; then
+            echo "❌ ERROR: Cannot merge 'main' back into 'dev'."
+            echo "   Flow: feature/* → dev → main (one direction only)."
+            exit 1
+          fi
+
+          # All checks passed
+          echo "✅ Branch rules validated successfully!"
+          echo "   Allowed: $HEAD → $BASE"
