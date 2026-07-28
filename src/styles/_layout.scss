@@ -13,18 +13,7 @@
   --item-border: rgba(148, 163, 184, 0.2);
 }
 
-:root[data-theme='light'] {
-  --bg-body: radial-gradient(circle at top center, #f8fafc 0%, #e2e8f0 75%);
-  --color-text: #0f172a;
-  --color-muted: #475569;
-  --card-bg: #ffffff;
-  --card-border: rgba(203, 213, 225, 0.9);
-  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --header-bg: rgba(255, 255, 255, 0.9);
-  --header-border: rgba(56, 189, 248, 0.5);
-  --item-bg: #f1f5f9;
-  --item-border: #cbd5e1;
-}
+
 
 * {
   box-sizing: border-box;
@@ -123,6 +112,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  align-items: start; /* Prevents expanding one card from stretching others in the row */
 
   @include respond-to('lg') {
     grid-template-columns: 1.8fr 1.2fr;

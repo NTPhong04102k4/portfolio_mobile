@@ -68,34 +68,6 @@ export function Header({ activeSection = 'about', onSelectSection }: HeaderProps
         >
           📄 CV PDF
         </a>
-
-        <div className="portfolio-navrow-controls">
-          <button
-            type="button"
-            className="portfolio-navrow__theme-toggle"
-            onClick={toggleTheme}
-            title="Chuyển đổi giao diện Sáng/Tối"
-          >
-            {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
-          </button>
-
-          <div className="portfolio-navrow__lang-toggle">
-            <button
-              type="button"
-              className={lang === 'vi' ? 'is-active' : ''}
-              onClick={() => setLang('vi')}
-            >
-              VI
-            </button>
-            <button
-              type="button"
-              className={lang === 'en' ? 'is-active' : ''}
-              onClick={() => setLang('en')}
-            >
-              EN
-            </button>
-          </div>
-        </div>
       </div>
     </header>
   );
