@@ -1,0 +1,153 @@
+@use 'variables' as *;
+
+:root[data-theme='dark'] {
+  --bg-body: radial-gradient(circle at top center, #0f172a 0%, #030712 75%);
+  --color-text: #f8fafc;
+  --color-muted: #94a3b8;
+  --card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(3, 7, 18, 0.95) 100%);
+  --card-border: rgba(148, 163, 184, 0.18);
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(15, 23, 42, 0.8);
+  --header-border: rgba(56, 189, 248, 0.4);
+  --item-bg: rgba(30, 41, 59, 0.6);
+  --item-border: rgba(148, 163, 184, 0.2);
+}
+
+:root[data-theme='light'] {
+  --bg-body: radial-gradient(circle at top center, #f8fafc 0%, #e2e8f0 75%);
+  --color-text: #0f172a;
+  --color-muted: #475569;
+  --card-bg: #ffffff;
+  --card-border: rgba(203, 213, 225, 0.9);
+  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-border: rgba(56, 189, 248, 0.5);
+  --item-bg: #f1f5f9;
+  --item-border: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-body);
+  color: var(--color-text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.portfolio-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.portfolio-main {
+  flex: 1;
+  width: 100%;
+  padding: clamp(16px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-content {
+  width: 100%;
+  max-width: $max-width;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 5vw, 56px);
+}
+
+.portfolio-section {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: $radius-lg;
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(16px);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: rgba(56, 189, 248, 0.35);
+  }
+}
+
+.portfolio-section__header {
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+}
+
+.portfolio-section__subtitle {
+  margin: 6px 0 0;
+  color: var(--color-muted);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+}
+
+.portfolio-section__body {
+  margin-top: $spacing-md;
+}
+
+/* International Bento Grid Systems */
+.bento-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+  }
+}
+
+.bento-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.8fr 1.2fr;
+    gap: 24px;
+  }
+}
+
+.bento-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes sectionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

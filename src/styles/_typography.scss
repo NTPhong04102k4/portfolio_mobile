@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-text);
+}
+
+p {
+  margin: 0 0 0.4rem;
+  color: var(--color-text);
+}
+
+ul {
+  margin: 0.3rem 0 0.6rem 1.2rem;
+  padding: 0;
+  color: var(--color-text);
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.cv-section__meta {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.cv-section__summary {
+  margin-top: 0.6rem;
+}
+
+.cv-section__link {
+  margin-top: 0.4rem;
+}

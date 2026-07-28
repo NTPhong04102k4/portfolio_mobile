@@ -1,0 +1,9 @@
+{
+  "cvVersion": "CV_V1",
+  "structureVersion": "PROJECT_STRUCTURE_V1",
+  "modules": ["user", "cv", "projects", "layout"],
+  "contentFiles": {
+    "rawCv": "src/content/CV_V1.md",
+    "parsedCv": "src/content/cv_v1.parsed.ts"
+  }
+}

@@ -1,0 +1,53 @@
+@use 'sass:map';
+
+// Color Palette - Deep Dark Mode with Neon Accents
+$color-bg: #070b14;
+$color-surface: #0f172a;
+$color-surface-hover: #1e293b;
+$color-border: rgba(148, 163, 184, 0.15);
+$color-border-glow: rgba(56, 189, 248, 0.4);
+
+// Brand Accents
+$color-accent: #38bdf8;
+$color-accent-soft: rgba(56, 189, 248, 0.15);
+$color-cyan: #38bdf8;
+$color-purple: #a855f7;
+$color-pink: #ec4899;
+$color-green: #10b981;
+
+// Text Colors
+$color-text: #f8fafc;
+$color-muted: #94a3b8;
+$color-subtle: #64748b;
+
+// Border Radii
+$radius-lg: 20px;
+$radius-md: 14px;
+$radius-sm: 8px;
+$radius-pill: 999px;
+
+// Spacing
+$spacing-xl: 40px;
+$spacing-lg: 28px;
+$spacing-md: 20px;
+$spacing-sm: 12px;
+$spacing-xs: 6px;
+
+// Layout
+$max-width: 1140px;
+
+// Breakpoints
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+);
+
+@mixin respond-to($size) {
+  @if map.has-key($breakpoints, $size) {
+    @media (min-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  }
+}
