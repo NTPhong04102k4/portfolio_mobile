@@ -130,7 +130,10 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(14px, 3.5vw, 20px);
-  align-items: start; /* Prevents expanding one card from stretching others in the row */
+  /* Cards in a row share the row height so the two project cards line up.
+     The usual downside — expanding one card stretching its sibling — is capped
+     by `.project-card__details` scrolling internally instead of growing. */
+  align-items: stretch;
 
   @include respond-to('lg') {
     grid-template-columns: 1.8fr 1.2fr;

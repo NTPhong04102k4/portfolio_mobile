@@ -1,6 +1,11 @@
 @use '../variables' as *;
 
 .project-card {
+  /* Column flex so the card fills the stretched grid row and the store badges
+     can be pinned to the bottom edge regardless of how much copy sits above. */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: clamp(14px, 3.5vw, 20px);
   border-radius: $radius-lg;
   background: var(--item-bg);
@@ -106,10 +111,6 @@
   }
 }
 
-.store-badge__icon {
-  font-size: 0.9rem;
-}
-
 .store-badge--secondary {
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.12));
   border-color: rgba(56, 189, 248, 0.45);
@@ -177,6 +178,11 @@
   border-top: 1px solid rgba(148, 163, 184, 0.12);
   display: grid;
   gap: 10px;
+  /* Scroll instead of growing without bound — this is what keeps one expanded
+     card from dragging its equal-height sibling down with it. */
+  max-height: 340px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .project-card__detail-cat {
@@ -207,15 +213,13 @@
   }
 }
 
-.project-card__detail-icon {
-  font-size: 0.9rem;
-}
-
 .project-card__links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  /* `auto` absorbs the slack in the shorter card so both footers align. */
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .project-card--highlight:hover {
