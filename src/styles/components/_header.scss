@@ -1,7 +1,11 @@
 @use '../variables' as *;
 
 .portfolio-header {
-  width: 100%;
+  /* `margin-inline` applies the gutter on BOTH sides, so the width has to give
+     back twice the value — subtracting it once left the header 12px wider than
+     its container, which `body { overflow-x: hidden }` then silently clipped. */
+  width: calc(100% - #{$spacing-sm * 2});
+  margin-inline: $spacing-sm;
   max-width: $max-width;
   padding: $spacing-sm $spacing-md;
   margin-top: $spacing-sm;
@@ -217,21 +221,8 @@
     padding: 12px;
   }
 
-  .portfolio-header__nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-    gap: 8px;
-
-    /* Hide scrollbar for a cleaner look */
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    scrollbar-width: none;
-  }
+  /* The inline nav is not restyled for mobile any more — it is hidden and
+     replaced by the drawer in `_mobile-nav.scss`. */
 
   .portfolio-header__right {
     width: 100%;
@@ -258,13 +249,5 @@
 
   .portfolio-header__role {
     font-size: 0.7rem;
-  }
-
-  .portfolio-header__nav {
-    gap: 4px;
-  }
-
-  .nav-item__label {
-    font-size: 0.75rem;
   }
 }
