@@ -1,3 +1,7 @@
+import { Play } from 'lucide-react';
+
+import { ICON_SIZE } from '@/config/icons';
+
 type ProjectCardLinksProps = {
   playStoreLink?: string;
   appLink?: string;
@@ -15,7 +19,7 @@ export function ProjectCardLinks({ playStoreLink, appLink }: ProjectCardLinksPro
           rel="noreferrer"
           className="store-badge"
         >
-          <span className="store-badge__icon">▶</span>
+          <Play className="store-badge__icon" size={ICON_SIZE.sm} aria-hidden="true" />
           Google Play
         </a>
       )}

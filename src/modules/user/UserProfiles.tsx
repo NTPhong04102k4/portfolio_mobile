@@ -1,3 +1,6 @@
+import { Building2, MapPin } from 'lucide-react';
+
+import { ICON_SIZE } from '@/config/icons';
 import { cvV1Data } from '@/content/cv_v1.parsed';
 
 export function UserProfile() {
@@ -13,7 +16,9 @@ export function UserProfile() {
       </h1>
 
       <p className="user-profile__meta">
-        📍 {cvV1Data.profile.location} • 🏢 {cvV1Data.profile.company}
+        <MapPin size={ICON_SIZE.sm} aria-hidden="true" />
+        {cvV1Data.profile.location} • <Building2 size={ICON_SIZE.sm} aria-hidden="true" />
+        {cvV1Data.profile.company}
       </p>
 
       <p className="user-profile__intro">{cvV1Data.intro}</p>

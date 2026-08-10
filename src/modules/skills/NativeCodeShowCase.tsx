@@ -1,6 +1,23 @@
+import { Apple, Bot, Check, Clipboard, Heart, Zap } from 'lucide-react';
 import { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dart from 'react-syntax-highlighter/dist/esm/languages/prism/dart';
+import kotlin from 'react-syntax-highlighter/dist/esm/languages/prism/kotlin';
+import swift from 'react-syntax-highlighter/dist/esm/languages/prism/swift';
+/**
+ * `prism-light` ships the highlighter with an EMPTY language registry, unlike
+ * the plain `Prism` export which statically pulls in all ~300 refractor
+ * grammars. Only the three languages this playground actually renders are
+ * registered below — adding a snippet in a new language means importing and
+ * registering that grammar here too, otherwise it renders unhighlighted.
+ */
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import { ICON_SIZE } from '@/config/icons';
+
+SyntaxHighlighter.registerLanguage('swift', swift);
+SyntaxHighlighter.registerLanguage('kotlin', kotlin);
+SyntaxHighlighter.registerLanguage('dart', dart);
 
 const swiftSnippet = `// iOS Native Code (Swift): ForgeRock IAM & Biometrics (FaceID/TouchID)
 import LocalAuthentication
@@ -96,7 +113,10 @@ export function NativeCodeShowcase() {
     <section className="terminal-playground">
       <header className="terminal-playground__header">
         <div>
-          <h3>⚡ Native Code Playground</h3>
+          <h3>
+            <Zap size={ICON_SIZE.lg} aria-hidden="true" />
+            Native Code Playground
+          </h3>
           <p>
             Ví dụ thực chiến mã nguồn <strong>Swift</strong>, <strong>Kotlin</strong> & <strong>Flutter (GetX)</strong> xử lý xác thực <strong>ForgeRock IAM</strong>, <strong>Biometrics Vân tay</strong> và <strong>Goong Maps API</strong> trong ứng dụng CredHR.
           </p>
@@ -118,26 +138,34 @@ export function NativeCodeShowcase() {
               className={`terminal-tab ${activeTab === 'swift' ? 'is-active' : ''}`}
               onClick={() => setActiveTab('swift')}
             >
-              🍏 iOS Swift (ForgeRock & FaceID)
+              <Apple size={ICON_SIZE.sm} aria-hidden="true" />
+              iOS Swift (ForgeRock & FaceID)
             </button>
             <button
               type="button"
               className={`terminal-tab ${activeTab === 'kotlin' ? 'is-active' : ''}`}
               onClick={() => setActiveTab('kotlin')}
             >
-              🤖 Android Kotlin (Goong Maps & Vân tay)
+              <Bot size={ICON_SIZE.sm} aria-hidden="true" />
+              Android Kotlin (Goong Maps & Vân tay)
             </button>
             <button
               type="button"
               className={`terminal-tab ${activeTab === 'flutter' ? 'is-active' : ''}`}
               onClick={() => setActiveTab('flutter')}
             >
-              💙 Flutter GetX (Web Controller)
+              <Heart size={ICON_SIZE.sm} aria-hidden="true" />
+              Flutter GetX (Web Controller)
             </button>
           </div>
 
           <button type="button" className="terminal-window__copy-btn" onClick={handleCopy}>
-            {copied ? '✓ Copied' : '📋 Copy'}
+            {copied ? (
+              <Check size={ICON_SIZE.sm} aria-hidden="true" />
+            ) : (
+              <Clipboard size={ICON_SIZE.sm} aria-hidden="true" />
+            )}
+            {copied ? 'Copied' : 'Copy'}
           </button>
         </div>
 

@@ -173,18 +173,12 @@
   }
 }
 
-.detail-category__icon {
-  font-size: 1.05rem;
-  flex-shrink: 0;
-}
-
 .detail-category__title {
   flex: 1;
   text-align: left;
 }
 
 .detail-category__caret {
-  font-size: 0.8rem;
   color: var(--color-muted);
   transition: transform 0.2s ease;
 }
@@ -214,12 +208,3 @@
   }
 }
 
-/* Float animation for highlighted project cards (see _project-card.scss). */
-@keyframes floatGlowPseudo {
-  0% {
-    box-shadow: 0 20px 45px rgba(56, 189, 248, 0.2);
-  }
-  100% {
-    box-shadow: 0 30px 70px rgba(56, 189, 248, 0.45);
-  }
-}

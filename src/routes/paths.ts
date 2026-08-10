@@ -5,6 +5,10 @@
  * read from here, so a route and its nav entry can never drift apart.
  */
 
+import { Briefcase, NotebookPen, Rocket, User } from 'lucide-react';
+
+import type { AppIcon } from '@/config/icons';
+
 export const ROUTES = {
   about: '/',
   projects: '/projects',
@@ -21,7 +25,7 @@ export type NavItem = {
   labelKey: string;
   /** i18n key for the sub-heading shown under the page title */
   subtitleKey: string;
-  icon: string;
+  icon: AppIcon;
 };
 
 export const NAV_ITEMS: NavItem[] = [
@@ -30,28 +34,28 @@ export const NAV_ITEMS: NavItem[] = [
     path: ROUTES.about,
     labelKey: 'nav.about',
     subtitleKey: 'section.about.subtitle',
-    icon: '👤',
+    icon: User,
   },
   {
     id: 'projects',
     path: ROUTES.projects,
     labelKey: 'nav.projects',
     subtitleKey: 'section.projects.subtitle',
-    icon: '💼',
+    icon: Briefcase,
   },
   {
     id: 'experience',
     path: ROUTES.experience,
     labelKey: 'nav.experience',
     subtitleKey: 'section.experience.subtitle',
-    icon: '🚀',
+    icon: Rocket,
   },
   {
     id: 'blog',
     path: ROUTES.blog,
     labelKey: 'nav.blog',
     subtitleKey: 'section.blog.subtitle',
-    icon: '📝',
+    icon: NotebookPen,
   },
 ];
 

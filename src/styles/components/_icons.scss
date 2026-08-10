@@ -1,0 +1,42 @@
+/**
+ * Lucide icon defaults.
+ *
+ * Every lucide-react icon ships with a `lucide` class merged into whatever
+ * `className` we pass, so one rule covers the whole app. Icons are SVG with
+ * `stroke: currentColor`, meaning they inherit their colour from the text
+ * around them — including the light/dark theme variables — with no extra work.
+ */
+.lucide {
+  /* Icons sit in flex rows next to labels; never let them get squashed. */
+  flex-shrink: 0;
+  /* Optically centre against the text baseline when used inline in prose. */
+  vertical-align: -0.15em;
+}
+
+/**
+ * Containers that previously relied on an emoji being part of the text node.
+ * An SVG is a replaced element, so these need an explicit flex row + gap to
+ * reproduce the spacing the emoji + space character used to provide.
+ */
+.btn-primary,
+.btn-secondary,
+.route-fallback__link,
+.terminal-tab,
+.terminal-window__copy-btn,
+.portfolio-header__cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-skill-group h3,
+.terminal-playground__header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Inline in a paragraph rather than a flex row — space with a margin. */
+.user-profile__meta .lucide {
+  margin-right: 5px;
+}

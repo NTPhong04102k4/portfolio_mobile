@@ -1,0 +1,83 @@
+@use '../variables' as *;
+
+/* Hero call-to-action row (CV download) — was an inline style on the element. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: $spacing-md;
+}
+
+.cv-subsection--softskills {
+  margin-top: 28px;
+}
+
+/* ── Direct contact channels ───────────────────────────────── */
+.contact-channels {
+  margin-top: $spacing-md;
+}
+
+.contact-channels__title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.contact-channels__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: $radius-pill;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  color: var(--color-text);
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-decoration: none;
+  /* Painted properties only — no `transform`. Moving the element under the
+     cursor changes its hit box and can oscillate in and out of :hover. */
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.18s ease-out;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-ring);
+    outline-offset: 2px;
+  }
+
+  /* Brand tints stay subtle so the row still reads as one set of controls.
+     Colours are alpha-blended over --item-bg, so they hold up in both themes. */
+  &--zalo:hover {
+    background: rgba(0, 104, 255, 0.16);
+    border-color: rgba(0, 104, 255, 0.55);
+    box-shadow: 0 8px 20px rgba(0, 104, 255, 0.16);
+  }
+
+  &--telegram:hover {
+    background: rgba(34, 158, 217, 0.16);
+    border-color: rgba(34, 158, 217, 0.55);
+    box-shadow: 0 8px 20px rgba(34, 158, 217, 0.16);
+  }
+
+  &--email:hover {
+    background: rgba(234, 67, 53, 0.14);
+    border-color: rgba(234, 67, 53, 0.5);
+    box-shadow: 0 8px 20px rgba(234, 67, 53, 0.14);
+  }
+}

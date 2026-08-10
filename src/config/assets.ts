@@ -11,4 +11,4 @@
 const fromPublic = (fileName: string) => `${import.meta.env.BASE_URL}${fileName}`
 
 /** Requires the real PDF to be placed at `public/cv-phong-react-native.pdf`. */
-export const CV_PDF_URL = fromPublic('public/Mobile_Developer_Nguyen_The_phong.pdf')
+export const CV_PDF_URL = fromPublic('Mobile_Developer_Nguyen_The_phong.pdf')

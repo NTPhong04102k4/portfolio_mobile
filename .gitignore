@@ -24,3 +24,5 @@ npm-debug.log*
 
 # Docker
 docker-compose.override.yml
+# skillrunner local ledger (emit counters/timestamps — machine-local)
+.skillrunner/

@@ -5,7 +5,10 @@
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "types": ["vite/client", "node"],
+    /* react-syntax-highlighter declares its deep subpaths as ambient modules in
+       @types/.../index.d.ts. That file is a global script, so it only loads when
+       the package is listed here — deep imports fail TS7016 otherwise. */
+    "types": ["vite/client", "node", "react-syntax-highlighter"],
     "skipLibCheck": true,
 
     /* Path alias configuration (paths resolve relative to this file) */
