@@ -1,0 +1,98 @@
+@use '../variables' as *;
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.25s ease-out;
+
+  &:hover {
+    border-color: var(--accent-ring);
+  }
+}
+
+/* User Profile & Status Dot */
+.user-profile__status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: $radius-pill;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-pill;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse 1.8s infinite;
+}
+
+.user-profile__title {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+
+  .user-profile__role-tag {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 10px;
+    border-radius: $radius-pill;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+}
+
+.user-profile__meta {
+  margin: 8px 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.user-profile__intro {
+  margin: 12px 0 0;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ── Responsive overrides (moved out of _header.scss) ─────────
+   The title uses clamp() but these breakpoints deliberately go
+   below the clamp minimum on small phones. */
+@media (max-width: 639px) {
+  .user-profile__title {
+    font-size: 1.4rem;
+  }
+
+  .user-profile__intro {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .user-profile__title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 346px) {
+  .user-profile__title {
+    font-size: 1.15rem;
+  }
+}

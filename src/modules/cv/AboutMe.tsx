@@ -1,3 +1,4 @@
+import { CV_PDF_URL } from '@/config/assets';
 import { UserProfile } from '@/modules/user/UserProfiles';
 
 const softSkills: string[] = [
@@ -18,7 +19,7 @@ export function AboutMe() {
 
       <div className="hero-actions" style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
         <a
-          href="/cv-phong-react-native.pdf"
+          href={CV_PDF_URL}
           target="_blank"
           rel="noreferrer"
           className="btn-primary"

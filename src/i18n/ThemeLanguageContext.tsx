@@ -39,6 +39,19 @@ const translations: Record<string, { vi: string; en: string }> = {
     vi: 'Kênh liên lạc chuyên nghiệp',
     en: 'Professional contact channels',
   },
+
+  'notfound.title': {
+    vi: 'Không tìm thấy trang',
+    en: 'Page not found',
+  },
+  'notfound.text': {
+    vi: 'Đường dẫn bạn truy cập không tồn tại hoặc đã được đổi tên.',
+    en: 'The path you requested does not exist or has been renamed.',
+  },
+  'notfound.back': {
+    vi: 'Về trang giới thiệu',
+    en: 'Back to about page',
+  },
 };
 
 type I18nProviderProps = {

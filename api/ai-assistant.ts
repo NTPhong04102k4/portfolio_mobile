@@ -7,6 +7,7 @@ interface ServerRequest {
 }
 
 interface ServerResponse {
+  setHeader: (name: string, value: string) => void;
   status: (code: number) => ServerResponse;
   json: (data: Record<string, unknown>) => void;
 }
@@ -33,7 +34,26 @@ interface GeminiResponse {
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export default async function handler(req: ServerRequest, res: ServerResponse): Promise<void> {
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    Object.entries(headers).forEach(([key, value]) => {
+      res.setHeader(key, value);
+    });
+    res.status(200).json({});
+    return;
+  }
+
+  Object.entries(headers).forEach(([key, value]) => {
+    res.setHeader(key, value);
+  });
+
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
@@ -49,8 +69,8 @@ export default async function handler(req: ServerRequest, res: ServerResponse): 
     const { cvIntro, messages } = req.body ?? {};
 
     const systemPrompt =
-      'Bạn là trợ lý ảo của Nguyễn Thế Phong - một React Native Developer sinh năm 2004. ' +
-      'Bạn chỉ trả lời dựa trên thông tin CV, dự án Eatsy (100k+ users), kinh nghiệm Swift/Kotlin và định hướng trở thành Senior Mobile Dev. ' +
+      'Bạn là trợ lý ảo của Nguyễn Thế Phong - một Middle Mobile Developer sinh năm 2004. ' +
+      'Bạn chỉ trả lời dựa trên thông tin CV, dự án CredHR (Quản lý nhân sự tích hợp ForgeRock IAM, Biometric, Goong Maps) và Eatsy (800k+ lượt tải), 3 năm kinh nghiệm thực tế với React Native/Flutter/Native (Swift/Kotlin). ' +
       'Phong cách trả lời: chuyên nghiệp, khiêm tốn và am hiểu công nghệ.\n\n';
 
     const conversationText = Array.isArray(messages)

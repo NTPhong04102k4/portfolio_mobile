@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.skills-radar {
+  margin-top: $spacing-sm;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), #020617);
+  border: 1px solid rgba(30, 64, 175, 0.9);
+}
+
+.skills-radar__header h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.skills-radar__header p {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: $color-muted;
+}
+
+.skills-radar__chart {
+  width: 100%;
+  max-width: 420px;
+}
