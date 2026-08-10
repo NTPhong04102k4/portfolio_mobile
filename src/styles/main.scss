@@ -8,6 +8,9 @@
 /* After utilities so the icon flex defaults win over the button base rules. */
 @use 'components/icons';
 @use 'components/header';
+/* After header: the mobile block hides `.portfolio-header__nav` at equal
+   specificity, so source order decides. */
+@use 'components/mobile-nav';
 @use 'components/footer';
 @use 'components/user-profile';
 @use 'components/project-card';
@@ -21,3 +24,4 @@
 @use 'components/terminal';
 @use 'components/blog';
 @use 'components/routes';
+@use 'components/skeleton';

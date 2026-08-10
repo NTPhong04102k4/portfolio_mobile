@@ -1,0 +1,181 @@
+@use '../variables' as *;
+
+/**
+ * Mobile drawer navigation.
+ *
+ * Below `sm` (640px) the header's inline nav is hidden and this takes over;
+ * from `sm` up the drawer trigger is hidden and the inline nav returns. The two
+ * never coexist, so there is only ever one set of nav links in the tab order.
+ *
+ * `transform` is used for the slide-in here. That is safe — unlike a hover
+ * lift, a drawer panel is not reacting to the pointer being over it, so moving
+ * it cannot feed back into its own trigger condition.
+ */
+
+/* Wrapper around brand + trigger. On desktop it dissolves so the brand remains
+   a direct flex child of `.portfolio-header`, keeping the original layout. */
+.portfolio-header__top {
+  display: contents;
+}
+
+.mobile-nav__trigger {
+  display: none; /* Shown only in the mobile block below. */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: $radius-md;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent-ring);
+  }
+}
+
+.mobile-nav__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* Above the sticky header (z-index: 100). */
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(2, 6, 23, 0.55);
+  backdrop-filter: blur(4px);
+  animation: mobileNavFade 0.2s ease-out;
+}
+
+.mobile-nav__drawer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: min(78vw, 320px);
+  height: 100%;
+  padding: $spacing-md;
+  background: var(--card-bg);
+  border-left: 1px solid var(--card-border);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
+  animation: mobileNavSlideIn 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mobile-nav__drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid var(--item-border);
+}
+
+.mobile-nav__drawer-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.mobile-nav__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: $radius-md;
+  background: transparent;
+  border: 1px solid var(--item-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent-ring);
+  }
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: $radius-md;
+  border: 1px solid transparent;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background: var(--accent-soft);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  &.is-active {
+    background: var(--accent-soft);
+    border-color: var(--accent-ring);
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+}
+
+@keyframes mobileNavFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobileNavSlideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ── Swap the two navs at the breakpoint ───────────────────── */
+@media (max-width: 639px) {
+  .portfolio-header__top {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-sm;
+  }
+
+  .mobile-nav__trigger {
+    display: inline-flex;
+  }
+
+  /* The inline nav is replaced by the drawer, not merely restyled. */
+  .portfolio-header__nav {
+    display: none;
+  }
+}
