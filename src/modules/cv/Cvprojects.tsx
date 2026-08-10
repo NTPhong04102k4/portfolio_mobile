@@ -1,3 +1,6 @@
+import { Play } from 'lucide-react';
+
+import { ICON_SIZE } from '@/config/icons';
 import { cvV1Data } from '@/content/cv_v1.parsed';
 import { MobileShowcase } from '@/modules/projects/MobileShowCase';
 
@@ -25,7 +28,7 @@ export function CvProjects() {
             rel="noreferrer"
             className="store-badge"
           >
-            <span className="store-badge__icon">▶</span>
+            <Play className="store-badge__icon" size={ICON_SIZE.sm} aria-hidden="true" />
             Xem trên Google Play
           </a>
         </p>

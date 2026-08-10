@@ -1,5 +1,7 @@
+import { ChevronDown, ChevronRight, Play } from 'lucide-react';
 import { useState } from 'react';
 
+import { type AppIcon, ICON_SIZE } from '@/config/icons';
 import { cvV1Data } from '@/content/cv_v1.parsed';
 import { NativeCodeShowcase } from '@/modules/skills/NativeCodeShowCase';
 
@@ -32,7 +34,7 @@ export function CvExperience() {
             rel="noreferrer"
             className="store-badge"
           >
-            <span className="store-badge__icon">▶</span>
+            <Play className="store-badge__icon" size={ICON_SIZE.sm} aria-hidden="true" />
             Google Play — Ứng dụng nội bộ
           </a>
         )}
@@ -68,7 +70,7 @@ export function CvExperience() {
 // ── Detail Category Grid ────────────────────────────────────────────
 type CategoryItem = {
   title: string;
-  icon: string;
+  icon: AppIcon;
   items: string[];
 };
 
@@ -84,6 +86,8 @@ function DetailCategoryGrid({ categories }: { categories: CategoryItem[] }) {
 
 function DetailCategoryTile({ category }: { category: CategoryItem }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { icon: Icon, title, items } = category;
+  const Caret = isOpen ? ChevronDown : ChevronRight;
 
   return (
     <div className={`detail-category ${isOpen ? 'detail-category--open' : ''}`}>
@@ -91,14 +95,15 @@ function DetailCategoryTile({ category }: { category: CategoryItem }) {
         type="button"
         className="detail-category__header"
         onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
       >
-        <span className="detail-category__icon">{category.icon}</span>
-        <span className="detail-category__title">{category.title}</span>
-        <span className="detail-category__caret">{isOpen ? '▾' : '▸'}</span>
+        <Icon className="detail-category__icon" size={ICON_SIZE.md} aria-hidden="true" />
+        <span className="detail-category__title">{title}</span>
+        <Caret className="detail-category__caret" size={ICON_SIZE.sm} aria-hidden="true" />
       </button>
       {isOpen && (
         <ul className="detail-category__items">
-          {category.items.map((item) => (
+          {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>

@@ -173,18 +173,12 @@
   }
 }
 
-.detail-category__icon {
-  font-size: 1.05rem;
-  flex-shrink: 0;
-}
-
 .detail-category__title {
   flex: 1;
   text-align: left;
 }
 
 .detail-category__caret {
-  font-size: 0.8rem;
   color: var(--color-muted);
   transition: transform 0.2s ease;
 }

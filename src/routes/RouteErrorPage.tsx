@@ -1,4 +1,7 @@
+import { ArrowLeft } from 'lucide-react';
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
+
+import { ICON_SIZE } from '@/config/icons';
 
 /**
  * Rendered when a route (or the layout itself) throws. Sits outside
@@ -21,7 +24,8 @@ export function RouteErrorPage() {
       <h2 className="route-fallback__title">Something went wrong</h2>
       <code className="route-fallback__path">{detail}</code>
       <a href="/" className="route-fallback__link">
-        ← Back to home
+        <ArrowLeft size={ICON_SIZE.md} aria-hidden="true" />
+        Back to home
       </a>
     </div>
   );

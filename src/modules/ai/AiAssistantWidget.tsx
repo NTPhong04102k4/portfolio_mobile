@@ -1,6 +1,8 @@
 import { AnimatePresence,motion } from "framer-motion";
+import { Sparkles } from 'lucide-react';
 import { type FormEvent,useCallback, useMemo, useState } from "react";
 
+import { ICON_SIZE } from '@/config/icons';
 import { cvV1Data } from '@/content/cv_v1.parsed';
 
 type Message = {
@@ -220,7 +222,7 @@ export function AiAssistantWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
       >
-        <span className="ai-assistant__fab-icon">⚡</span>
+        <Sparkles className="ai-assistant__fab-icon" size={ICON_SIZE.lg} aria-hidden="true" />
         <span className="ai-assistant__fab-label">Ask my AI CV</span>
       </motion.button>
     </div>

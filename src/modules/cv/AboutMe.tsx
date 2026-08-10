@@ -1,4 +1,7 @@
+import { FileDown, MessageCircle } from 'lucide-react';
+
 import { CV_PDF_URL } from '@/config/assets';
+import { ICON_SIZE } from '@/config/icons';
 import { UserProfile } from '@/modules/user/UserProfiles';
 
 const softSkills: string[] = [
@@ -24,10 +27,12 @@ export function AboutMe() {
           rel="noreferrer"
           className="btn-primary"
         >
-          📄 Tải CV PDF (Senior Mobile Engineer)
+          <FileDown size={ICON_SIZE.md} aria-hidden="true" />
+          Tải CV PDF (Senior Mobile Engineer)
         </a>
         <button type="button" onClick={scrollToContact} className="btn-secondary">
-          💬 Liên hệ & Thảo luận Dự án
+          <MessageCircle size={ICON_SIZE.md} aria-hidden="true" />
+          Liên hệ & Thảo luận Dự án
         </button>
       </div>
 

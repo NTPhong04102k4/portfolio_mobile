@@ -5,6 +5,8 @@
 
 @use 'components/animations';
 @use 'components/utilities';
+/* After utilities so the icon flex defaults win over the button base rules. */
+@use 'components/icons';
 @use 'components/header';
 @use 'components/footer';
 @use 'components/user-profile';

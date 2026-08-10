@@ -1,4 +1,7 @@
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+
+import { ICON_SIZE } from '@/config/icons';
 
 import type { Project } from './data/projects';
 import { ProjectCardDetails } from './ProjectCardDetails';
@@ -35,8 +38,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
           type="button"
           className="project-card__details-toggle"
           onClick={() => setShowDetails((v) => !v)}
+          aria-expanded={showDetails}
         >
-          {showDetails ? '▾ Ẩn chi tiết' : '▸ Xem chi tiết công việc'}
+          {showDetails ? (
+            <ChevronDown size={ICON_SIZE.sm} aria-hidden="true" />
+          ) : (
+            <ChevronRight size={ICON_SIZE.sm} aria-hidden="true" />
+          )}
+          {showDetails ? 'Ẩn chi tiết' : 'Xem chi tiết công việc'}
         </button>
       )}
 

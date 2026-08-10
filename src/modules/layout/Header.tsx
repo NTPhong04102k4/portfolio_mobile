@@ -1,6 +1,8 @@
+import { FileText } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 import { CV_PDF_URL } from '@/config/assets';
+import { ICON_SIZE } from '@/config/icons';
 import { useI18n } from '@/i18n/I18nContext';
 import { NAV_ITEMS } from '@/routes/paths';
 
@@ -26,16 +28,16 @@ export function Header() {
 
       {/* Center Navigation Bar */}
       <nav className="portfolio-header__nav" aria-label="Main">
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.map(({ id, path, icon: Icon, labelKey }) => (
           <NavLink
-            key={item.id}
-            to={item.path}
+            key={id}
+            to={path}
             // Without `end`, the index route would stay active on every page.
-            end={item.id === 'about'}
+            end={id === 'about'}
             className={navItemClass}
           >
-            <span className="nav-item__icon">{item.icon}</span>
-            <span className="nav-item__label">{t(item.labelKey)}</span>
+            <Icon className="nav-item__icon" size={ICON_SIZE.md} aria-hidden="true" />
+            <span className="nav-item__label">{t(labelKey)}</span>
           </NavLink>
         ))}
       </nav>
@@ -49,7 +51,8 @@ export function Header() {
           target="_blank"
           rel="noreferrer"
         >
-          📄 CV PDF
+          <FileText size={ICON_SIZE.md} aria-hidden="true" />
+          CV PDF
         </a>
       </div>
     </header>
