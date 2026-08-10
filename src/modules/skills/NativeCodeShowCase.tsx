@@ -1,9 +1,23 @@
 import { Apple, Bot, Check, Clipboard, Heart, Zap } from 'lucide-react';
 import { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dart from 'react-syntax-highlighter/dist/esm/languages/prism/dart';
+import kotlin from 'react-syntax-highlighter/dist/esm/languages/prism/kotlin';
+import swift from 'react-syntax-highlighter/dist/esm/languages/prism/swift';
+/**
+ * `prism-light` ships the highlighter with an EMPTY language registry, unlike
+ * the plain `Prism` export which statically pulls in all ~300 refractor
+ * grammars. Only the three languages this playground actually renders are
+ * registered below — adding a snippet in a new language means importing and
+ * registering that grammar here too, otherwise it renders unhighlighted.
+ */
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { ICON_SIZE } from '@/config/icons';
+
+SyntaxHighlighter.registerLanguage('swift', swift);
+SyntaxHighlighter.registerLanguage('kotlin', kotlin);
+SyntaxHighlighter.registerLanguage('dart', dart);
 
 const swiftSnippet = `// iOS Native Code (Swift): ForgeRock IAM & Biometrics (FaceID/TouchID)
 import LocalAuthentication
