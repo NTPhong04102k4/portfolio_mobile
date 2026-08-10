@@ -208,12 +208,3 @@
   }
 }
 
-/* Float animation for highlighted project cards (see _project-card.scss). */
-@keyframes floatGlowPseudo {
-  0% {
-    box-shadow: 0 20px 45px rgba(56, 189, 248, 0.2);
-  }
-  100% {
-    box-shadow: 0 30px 70px rgba(56, 189, 248, 0.45);
-  }
-}

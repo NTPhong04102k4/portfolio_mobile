@@ -45,16 +45,14 @@
   font-size: 0.83rem;
   font-weight: 600;
   text-decoration: none;
-  /* Separate properties rather than `all` so the translateY does not fight the
-     colour transitions and re-trigger itself (see SKILL.md hover guidance). */
+  /* Painted properties only — no `transform`. Moving the element under the
+     cursor changes its hit box and can oscillate in and out of :hover. */
   transition:
-    transform 0.18s ease-out,
     background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.18s ease-out;
 
   &:hover {
-    transform: translateY(-2px);
     text-decoration: none;
   }
 
