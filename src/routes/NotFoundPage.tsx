@@ -1,5 +1,7 @@
+import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
+import { ICON_SIZE } from '@/config/icons';
 import { useI18n } from '@/i18n/I18nContext';
 
 import { ROUTES } from './paths';
@@ -15,7 +17,8 @@ export function NotFoundPage() {
       <p className="route-fallback__text">{t('notfound.text')}</p>
       <code className="route-fallback__path">{pathname}</code>
       <Link to={ROUTES.about} className="route-fallback__link">
-        ← {t('notfound.back')}
+        <ArrowLeft size={ICON_SIZE.md} aria-hidden="true" />
+        {t('notfound.back')}
       </Link>
     </div>
   );

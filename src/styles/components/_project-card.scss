@@ -1,36 +1,44 @@
 @use '../variables' as *;
 
 .project-card {
+  /* Column flex so the store badges can be pinned to the bottom edge regardless
+     of how much copy sits above. The card fills the row via the grid's
+     `align-items: stretch`; no explicit height needed — and an explicit one
+     would resolve against an auto row once the grid switches to `start`. */
+  display: flex;
+  flex-direction: column;
   padding: clamp(14px, 3.5vw, 20px);
   border-radius: $radius-lg;
   background: var(--item-bg);
   border: 1px solid var(--item-border);
   box-shadow: var(--card-shadow);
+  /* Hover is expressed purely through painted properties — no `transform`.
+     Moving the card under the cursor changes its own hit box, so a pointer near
+     the edge loses hover, the card drops back, hover returns: an oscillation
+     loop. Colour and shadow never touch layout or hit testing, so the effect
+     cannot feed back into itself. */
   transition:
-    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative; /* For pseudo-elements */
   z-index: 1;
 
-  /* Animated glow container */
+  /* Glow wash that fades in on hover. Sits behind the content and ignores
+     pointer events so it can never affect hit testing. */
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.1) 0%,
+      rgba(168, 85, 247, 0.1) 100%
+    );
     opacity: 0;
     transition: opacity 0.25s ease;
     z-index: -1;
     pointer-events: none;
-  }
-
-  /* Expand hover hit area to prevent translateY jitter */
-  &::after {
-    content: '';
-    position: absolute;
-    inset: -15px;
-    z-index: -2;
   }
 
   &--highlight {
@@ -70,11 +78,11 @@
 
   &:hover {
     border-color: rgba(56, 189, 248, 0.6);
-    transform: translateY(-2px);
-  }
+    box-shadow: 0 18px 40px rgba(56, 189, 248, 0.18);
 
-  &:active {
-    transform: translateY(-1px);
+    &::before {
+      opacity: 1;
+    }
   }
 }
 
@@ -95,19 +103,13 @@
   transition:
     background 0.2s ease-out,
     border-color 0.2s ease-out,
-    transform 0.2s ease-out,
     box-shadow 0.2s ease-out;
 
   &:hover {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.25));
     border-color: rgba(16, 185, 129, 0.8);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
   }
-}
-
-.store-badge__icon {
-  font-size: 0.9rem;
 }
 
 .store-badge--secondary {
@@ -207,22 +209,18 @@
   }
 }
 
-.project-card__detail-icon {
-  font-size: 0.9rem;
-}
-
 .project-card__links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  /* `auto` absorbs the slack in the shorter card so both footers align. */
+  margin-top: auto;
+  padding-top: 12px;
 }
 
+/* Highlight cards get a stronger glow, still a plain transition. The previous
+   `floatGlowPseudo` infinite alternate animation restarted on every hover
+   re-entry, so the oscillation above made it visibly flicker. */
 .project-card--highlight:hover {
-  transform: translateY(-4px);
-  
-  &::before {
-    opacity: 1;
-    animation: floatGlowPseudo 2.4s ease-in-out infinite alternate;
-  }
+  box-shadow: 0 24px 60px rgba(56, 189, 248, 0.32);
 }

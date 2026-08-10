@@ -1,3 +1,18 @@
+import {
+  Globe,
+  KeyRound,
+  Layers,
+  Palette,
+  Rocket,
+  Settings2,
+  ShieldCheck,
+  Smartphone,
+  TabletSmartphone,
+  Wallet,
+  Wrench,
+  Zap,
+} from 'lucide-react';
+
 export const cvV1Data = {
   intro:
     'Mobile Developer với chuyên môn sâu về React Native & Flutter, giàu kinh nghiệm phát triển Native Code (Kotlin & Swift). Đã phát triển thành công CredHR (Ứng dụng Quản lý nhân sự tích hợp ForgeRock IAM, Biometric, Goong Maps) và Eatsy (800,000+ lượt tải).',
@@ -50,7 +65,7 @@ export const cvV1Data = {
     detailCategories: [
       {
         title: 'Bảo mật & Xác thực (Authentication)',
-        icon: '🔐',
+        icon: ShieldCheck,
         items: [
           'Tích hợp hệ thống quản lý định danh ForgeRock IAM thông qua giao tiếp với Native code (Swift cho iOS và Kotlin cho Android)',
           'Triển khai tính năng đăng nhập bằng sinh trắc học (Biometrics) để tăng cường bảo mật và trải nghiệm người dùng',
@@ -58,7 +73,7 @@ export const cvV1Data = {
       },
       {
         title: 'Build Variants & Flavors',
-        icon: '⚙️',
+        icon: Settings2,
         items: [
           'Thiết lập và chia các môi trường (flavors) bài bản: Dev, Staging, Prod',
           'Mỗi flavor chia thành 2 build types: Release và Bundle',
@@ -67,7 +82,7 @@ export const cvV1Data = {
       },
       {
         title: 'Cấu hình Dịch vụ bên thứ 3',
-        icon: '🔧',
+        icon: Wrench,
         items: [
           'Tách biệt cấu hình Firebase tương ứng cho từng môi trường (flavor) để đảm bảo an toàn dữ liệu',
           'Tích hợp bản đồ số Goong Maps để xử lý các nghiệp vụ liên quan đến vị trí',
@@ -75,7 +90,7 @@ export const cvV1Data = {
       },
       {
         title: 'UI & Webview',
-        icon: '📱',
+        icon: Smartphone,
         items: [
           'Xử lý và đồng bộ giao tiếp giữa app và nền tảng web thông qua Web Controller',
           'Xây dựng module UI động bằng Flutter & GetX state management',
@@ -83,7 +98,7 @@ export const cvV1Data = {
       },
       {
         title: 'Triển khai (Deployment)',
-        icon: '🚀',
+        icon: Rocket,
         items: [
           'Chịu trách nhiệm build, cấu hình chứng chỉ và đẩy ứng dụng lên App Store và Google Play',
           'Ứng dụng nội bộ cho nhân viên công ty Thai Thinh Medic',
@@ -133,7 +148,7 @@ export const cvV1Data = {
     detailCategories: [
       {
         title: 'Kiến trúc & Quản lý State',
-        icon: '🏗️',
+        icon: Layers,
         items: [
           'Tuân thủ chặt chẽ tiêu chuẩn TypeScript trong toàn bộ dự án',
           'Redux & Redux Saga cho logic phức tạp',
@@ -143,7 +158,7 @@ export const cvV1Data = {
       },
       {
         title: 'UI & Design (Figma → Code)',
-        icon: '🎨',
+        icon: Palette,
         items: [
           'Trực tiếp kéo Figma ra giao diện pixel-perfect',
           'Tối ưu animation mượt mà với react-native-reanimated',
@@ -152,7 +167,7 @@ export const cvV1Data = {
       },
       {
         title: 'Tối ưu hóa Hiệu năng (Performance)',
-        icon: '⚡',
+        icon: Zap,
         items: [
           'Tối ưu hóa hiển thị danh sách lớn (FlatList) với pagination mượt mà',
           'AutoFocus khi thực hiện scroll infinity',
@@ -161,7 +176,7 @@ export const cvV1Data = {
       },
       {
         title: 'Tối ưu hóa Mạng & API',
-        icon: '🌐',
+        icon: Globe,
         items: [
           'Xử lý API qua Axios, kiểm soát chặt chẽ luồng dữ liệu bằng AbortController',
           'Xử lý triệt để tình trạng Race Conditions',
@@ -170,7 +185,7 @@ export const cvV1Data = {
       },
       {
         title: 'Native & Native Modules',
-        icon: '📲',
+        icon: TabletSmartphone,
         items: [
           'Viết code Native xử lý Splash Screen',
           'Tích hợp Native Widgets (Swift WidgetKit & Kotlin Glance)',
@@ -179,7 +194,7 @@ export const cvV1Data = {
       },
       {
         title: 'Xác thực & Form',
-        icon: '🔑',
+        icon: KeyRound,
         items: [
           'Tích hợp đăng nhập mạng xã hội (OAuth2) qua Facebook và Google',
           'Xử lý forms phức tạp kết hợp validation chặt chẽ bằng React Hook Form và Zod',
@@ -187,7 +202,7 @@ export const cvV1Data = {
       },
       {
         title: 'Thanh toán & Monetization',
-        icon: '💰',
+        icon: Wallet,
         items: [
           'Xử lý thanh toán QR trong ứng dụng',
           'Tích hợp In-App Advertising (IAA)',

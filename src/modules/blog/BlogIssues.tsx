@@ -1,4 +1,7 @@
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+
+import { ICON_SIZE } from '@/config/icons';
 
 type IssueStatus = 'open' | 'closed';
 
@@ -99,12 +102,21 @@ export function BlogIssues() {
               type="button"
               className="blog-issue__header"
               onClick={() => toggleIssue(issue.id)}
+              aria-expanded={isOpen}
             >
               <span className={`blog-issue__status blog-issue__status--${issue.status}`}>
                 {issue.status === 'open' ? 'OPEN' : 'CLOSED'}
               </span>
               <span className="blog-issue__title">{issue.title}</span>
-              <span className="blog-issue__caret">{isOpen ? '▾' : '▸'}</span>
+              {isOpen ? (
+                <ChevronDown className="blog-issue__caret" size={ICON_SIZE.sm} aria-hidden="true" />
+              ) : (
+                <ChevronRight
+                  className="blog-issue__caret"
+                  size={ICON_SIZE.sm}
+                  aria-hidden="true"
+                />
+              )}
             </button>
             <div className="blog-issue__meta">
               {issue.tags.map((tag) => (

@@ -1,7 +1,21 @@
+import {
+  Globe,
+  Layers,
+  Palette,
+  Rocket,
+  Settings2,
+  ShieldCheck,
+  TabletSmartphone,
+  Wallet,
+  Wrench,
+  Zap,
+} from 'lucide-react';
+
+import type { AppIcon } from '@/config/icons';
 
 export type DetailCategory = {
   title: string;
-  icon: string;
+  icon: AppIcon;
   items: string[];
 };
 
@@ -41,7 +55,7 @@ export const projects: Project[] = [
     detailCategories: [
       {
         title: 'Bảo mật & Xác thực',
-        icon: '🔐',
+        icon: ShieldCheck,
         items: [
           'Tích hợp ForgeRock IAM thông qua Native code (Swift/Kotlin)',
           'Đăng nhập sinh trắc học (Biometrics)',
@@ -49,7 +63,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Build Variants & Flavors',
-        icon: '⚙️',
+        icon: Settings2,
         items: [
           '3 flavors: Dev, Staging, Prod',
           'Mỗi flavor × 2 build types (Release, Bundle) = 6 variants',
@@ -57,7 +71,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Firebase & Goong Maps',
-        icon: '🔧',
+        icon: Wrench,
         items: [
           'Firebase config tách biệt theo từng flavor',
           'Goong Maps xử lý nghiệp vụ vị trí',
@@ -65,7 +79,7 @@ export const projects: Project[] = [
       },
       {
         title: 'UI/Webview & Deployment',
-        icon: '🚀',
+        icon: Rocket,
         items: [
           'Giao tiếp app ↔ web qua Web Controller',
           'Build & đẩy lên App Store / Google Play',
@@ -94,14 +108,14 @@ export const projects: Project[] = [
     detailCategories: [
       {
         title: 'Kiến trúc & State',
-        icon: '🏗️',
+        icon: Layers,
         items: [
           'TypeScript strict, Redux Saga, Zustand, Context API, TanStack Query',
         ],
       },
       {
         title: 'UI & Design (Figma)',
-        icon: '🎨',
+        icon: Palette,
         items: [
           'Trực tiếp kéo Figma → UI pixel-perfect',
           'Tối ưu animation, gesture-handler',
@@ -109,28 +123,28 @@ export const projects: Project[] = [
       },
       {
         title: 'Performance',
-        icon: '⚡',
+        icon: Zap,
         items: [
           'FlatList optimize, pagination, autoFocus scroll infinity',
         ],
       },
       {
         title: 'Network & API',
-        icon: '🌐',
+        icon: Globe,
         items: [
           'Axios, AbortController, Race Conditions, Search Cache',
         ],
       },
       {
         title: 'Native Modules',
-        icon: '📲',
+        icon: TabletSmartphone,
         items: [
           'Splash Screen native, Widgets (WidgetKit/Glance), Notifee FCM',
         ],
       },
       {
         title: 'Payment & Monetization',
-        icon: '💰',
+        icon: Wallet,
         items: [
           'Thanh toán QR, In-App Advertising (IAA), In-App Purchase (IAP)',
         ],

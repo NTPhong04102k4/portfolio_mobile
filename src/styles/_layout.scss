@@ -130,11 +130,52 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(14px, 3.5vw, 20px);
-  align-items: start; /* Prevents expanding one card from stretching others in the row */
+  /* Collapsed state: stretch the row so both project cards line up at the same
+     height. `ProjectsList` swaps in the --expanded modifier as soon as any card
+     opens, which is what keeps this from violating the `align-items: start`
+     guidance in SKILL.md — see below. */
+  align-items: stretch;
+
+  /* A card is open. Rows go back to content-sized so the expanded card grows on
+     its own instead of dragging its sibling up to the same height. */
+  &--expanded {
+    align-items: start;
+  }
 
   @include respond-to('lg') {
     grid-template-columns: 1.8fr 1.2fr;
     gap: 24px;
+  }
+}
+
+/* ── Mobile: flatten the outermost shell ───────────────────────
+   On a phone the section card, the content cards inside it and their own
+   sub-panels stack up as three nested borders — box inside box inside box, and
+   at 375px each frame eats horizontal space the content needs.
+
+   The outer shell is the one to drop: it carries no information the section
+   heading does not already give, so below `sm` the content cards become the
+   only framed level. Desktop keeps it — on a wide screen that frame reads as
+   structure rather than clutter. */
+@media (max-width: 639px) {
+  .portfolio-section {
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding: 0;
+  }
+
+  /* The page gutter now comes from here rather than the section padding that
+     was just removed. Matches the header's own inset so the left edge of the
+     header, the headings and the cards all line up. */
+  .portfolio-main {
+    padding-inline: $spacing-sm;
+  }
+
+  .portfolio-section__header {
+    margin-bottom: $spacing-md;
   }
 }
 

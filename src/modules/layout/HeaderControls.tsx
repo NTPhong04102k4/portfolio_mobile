@@ -11,6 +11,9 @@
  * The underlying providers stay active — `ThemeProvider` still applies
  * `data-theme` and `I18nProvider` still resolves labels — only the UI is gone.
  */
+import { Moon, Sun } from 'lucide-react';
+
+import { ICON_SIZE } from '@/config/icons';
 import { useI18n } from '@/i18n/I18nContext';
 import { useTheme } from '@/theme/ThemeContext';
 
@@ -31,7 +34,11 @@ export function ThemeToggle() {
       aria-label={`Switch to ${nextLabel} mode`}
       title={`Switch to ${nextLabel} mode`}
     >
-      <span aria-hidden="true">{theme === 'dark' ? '☀️' : '🌙'}</span>
+      {theme === 'dark' ? (
+        <Sun size={ICON_SIZE.md} aria-hidden="true" />
+      ) : (
+        <Moon size={ICON_SIZE.md} aria-hidden="true" />
+      )}
     </button>
   );
 }

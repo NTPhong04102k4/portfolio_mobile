@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { AboutPage } from './AboutPage';
+import { routeLoaders } from './lazyRoutes';
 import { NotFoundPage } from './NotFoundPage';
 import { RootLayout } from './RootLayout';
 import { RouteErrorPage } from './RouteErrorPage';
@@ -22,24 +23,26 @@ export const router = createBrowserRouter(
         // Landing route stays eager — lazy-loading it would only add a blank
         // frame on first paint, with nothing to gain.
         { index: true, element: <AboutPage /> },
+        // Loaders come from `lazyRoutes` so the header's hover prefetch warms
+        // the very same chunk these await.
         {
           path: 'projects',
           lazy: async () => {
-            const { ProjectsPage } = await import('./ProjectsPage');
+            const { ProjectsPage } = await routeLoaders.projects();
             return { Component: ProjectsPage };
           },
         },
         {
           path: 'experience',
           lazy: async () => {
-            const { ExperiencePage } = await import('./ExperiencePage');
+            const { ExperiencePage } = await routeLoaders.experience();
             return { Component: ExperiencePage };
           },
         },
         {
           path: 'blog',
           lazy: async () => {
-            const { BlogPage } = await import('./BlogPage');
+            const { BlogPage } = await routeLoaders.blog();
             return { Component: BlogPage };
           },
         },

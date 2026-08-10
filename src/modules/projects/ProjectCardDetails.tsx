@@ -1,3 +1,5 @@
+import { ICON_SIZE } from '@/config/icons';
+
 import type { Project } from './data/projects';
 
 type ProjectCardDetailsProps = {
@@ -9,14 +11,14 @@ export function ProjectCardDetails({ categories }: ProjectCardDetailsProps) {
 
   return (
     <div className="project-card__details">
-      {categories.map((cat) => (
-        <div key={cat.title} className="project-card__detail-cat">
+      {categories.map(({ title, icon: Icon, items }) => (
+        <div key={title} className="project-card__detail-cat">
           <h4>
-            <span className="project-card__detail-icon">{cat.icon}</span>
-            {cat.title}
+            <Icon className="project-card__detail-icon" size={ICON_SIZE.md} aria-hidden="true" />
+            {title}
           </h4>
           <ul>
-            {cat.items.map((item) => (
+            {items.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
