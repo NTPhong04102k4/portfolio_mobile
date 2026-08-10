@@ -2,7 +2,7 @@
 
 ### 1. Giới thiệu bản thân
 
-Fresher React Native Developer với hơn 1 năm kinh nghiệm thực tế tại Eatsy JSC — sản phẩm health & nutrition phục vụ 500,000+ người dùng trên iOS & Android. Có khả năng viết Native code (Swift/Kotlin) và tối ưu performance ở tầng platform, không chỉ dừng lại ở JavaScript. Quen làm việc trong môi trường Agile và ứng dụng AI workflow để tăng tốc độ phát triển.
+Middle Mobile Developer với 3 năm kinh nghiệm thực tế tại Eatsy JSC — sản phẩm health & nutrition phục vụ 800,000+ lượt tải trên iOS & Android. Có khả năng viết Native code (Swift/Kotlin) và tối ưu performance ở tầng platform, không chỉ dừng lại ở JavaScript. Quen làm việc trong môi trường Agile và ứng dụng AI workflow để tăng tốc độ phát triển.
 
 ### 2. Kỹ năng chuyên môn
 
@@ -76,7 +76,7 @@ _React Native Developer | 08/2023 – Hiện tại | Hà Nội_
 **Eatsy - Ứng dụng Mobile Sức khỏe & Dinh dưỡng**
 
 - Nền tảng: iOS & Android (React Native) + Backend (Node.js/NestJS) + Database (PostgreSQL)
-- Quy mô: 800,000+ người dùng
+- Quy mô: 800,000+ lượt tải
 - Tính năng: Nhận diện thực phẩm AI, kế hoạch bữa ăn cá nhân hóa, theo dõi dinh dưỡng.
 - Link App: https://eatsyvn.app.link/QaUq7EJsttb
 

@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+.portfolio-footer {
+  width: 100%;
+  max-width: $max-width;
+  padding: $spacing-md clamp(10px, 3vw, 36px) $spacing-lg;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: center;
+
+  p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+}

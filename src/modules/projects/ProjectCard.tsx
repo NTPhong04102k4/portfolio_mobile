@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Project } from './data/projects';
+import { ProjectCardDetails } from './ProjectCardDetails';
+import { ProjectCardLinks } from './ProjectCardLinks';
 
 type ProjectCardProps = {
   project: Project;
@@ -38,48 +40,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </button>
       )}
 
-      {showDetails && (
-        <div className="project-card__details">
-          {project.detailCategories.map((cat) => (
-            <div key={cat.title} className="project-card__detail-cat">
-              <h4>
-                <span className="project-card__detail-icon">{cat.icon}</span>
-                {cat.title}
-              </h4>
-              <ul>
-                {cat.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
+      {showDetails && <ProjectCardDetails categories={project.detailCategories} />}
 
       {/* Store Badges */}
-      <div className="project-card__links">
-        {project.playStoreLink && (
-          <a
-            href={project.playStoreLink}
-            target="_blank"
-            rel="noreferrer"
-            className="store-badge"
-          >
-            <span className="store-badge__icon">▶</span>
-            Google Play
-          </a>
-        )}
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="store-badge store-badge--secondary"
-          >
-            Xem ứng dụng
-          </a>
-        )}
-      </div>
+      <ProjectCardLinks playStoreLink={project.playStoreLink} appLink={project.link} />
     </article>
   );
 }

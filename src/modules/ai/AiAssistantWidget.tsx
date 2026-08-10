@@ -14,8 +14,8 @@ const introSummary = `${"Nguyễn Thế Phong"} — ${cvV1Data.profile.title}. $
 async function callAiBackend(messages: Message[]): Promise<string> {
   const buildLocalFallback = () => {
     const last = messages[messages.length - 1]?.text.toLowerCase() ?? "";
-    if (last.includes("user") || last.includes("users")) {
-      return "Dự án Eatsy đang phục vụ hơn 100.000+ người dùng trên iOS và Android.";
+    if (last.includes("user") || last.includes("users") || last.includes("eatsy")) {
+      return "Dự án Eatsy đang phục vụ hơn 800,000+ lượt tải trên iOS và Android. Mình là dev chính trực tiếp kéo Figma ra giao diện, xử lý payment và optimize performance.";
     }
     if (
       last.includes("native") ||
@@ -32,11 +32,23 @@ async function callAiBackend(messages: Message[]): Promise<string> {
     ) {
       return "Phong áp dụng tư duy AI-first: sử dụng Cursor + Gemini/Claude để thiết kế kiến trúc, viết test, refactor và tối ưu performance trước khi code.";
     }
-    return "Hiện tại AI backend tạm thời không phản hồi. Bạn có thể xem nhanh tab Projects/Experience để nắm rõ hơn về profile của Phong.";
+    if (
+      last.includes("exp") ||
+      last.includes("kinh nghiệm") ||
+      last.includes("middle")
+    ) {
+      return "Phong hiện là Middle Mobile Developer với 3 năm kinh nghiệm, chuyên sâu về React Native, Flutter và Native (Swift/Kotlin).";
+    }
+    
+    return "Hiện tại AI backend đang tạm nghỉ hoặc quá tải. Tuy nhiên, Phong có 3 năm kinh nghiệm (Middle level). Bạn có thể xem nhanh tab Projects/Experience để nắm rõ hơn về profile nhé!";
   };
 
   try {
-    const res = await fetch("/api/ai-assistant", {
+    // Gọi sang Vercel Serverless Backend.
+    // Nếu deploy Frontend lên GitHub Pages, bắt buộc phải set VITE_AI_API_URL trỏ về link Vercel.
+    const apiUrl = import.meta.env.VITE_AI_API_URL || "/api/ai-assistant";
+    
+    const res = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +66,6 @@ async function callAiBackend(messages: Message[]): Promise<string> {
       if (res.status === 429) {
         return "AI backend đang quá tải (429). Có thể bạn đã gửi quá nhiều câu hỏi trong thời gian ngắn. Hãy đợi một chút rồi thử lại nhé.";
       }
-
       return buildLocalFallback();
     }
 
@@ -65,7 +76,9 @@ async function callAiBackend(messages: Message[]): Promise<string> {
 
     return buildLocalFallback();
   } catch (error) {
-    console.error(error);
+    console.error("AI fetch error, using local fallback:", error);
+    // Tự động fake delay cho giống AI đang gõ nếu fallback do lỗi kết nối
+    await new Promise((resolve) => setTimeout(resolve, 800));
     return buildLocalFallback();
   }
 }

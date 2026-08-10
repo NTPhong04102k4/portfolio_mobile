@@ -1,8 +1,8 @@
 export const cvV1Data = {
   intro:
-    'Mobile Developer với chuyên môn sâu về React Native & Flutter, giàu kinh nghiệm phát triển Native Code (Kotlin & Swift). Đã phát triển thành công CredHR (Ứng dụng Quản lý nhân sự tích hợp ForgeRock IAM, Biometric, Goong Maps) và Eatsy (500k+ người dùng).',
+    'Mobile Developer với chuyên môn sâu về React Native & Flutter, giàu kinh nghiệm phát triển Native Code (Kotlin & Swift). Đã phát triển thành công CredHR (Ứng dụng Quản lý nhân sự tích hợp ForgeRock IAM, Biometric, Goong Maps) và Eatsy (800,000+ lượt tải).',
   profile: {
-    title: 'Mobile Developer (React Native / Flutter / Native Swift & Kotlin)',
+    title: 'Middle Mobile Developer (React Native / Flutter / Native Swift & Kotlin)',
     company: 'CredHR & Eatsy JSC',
     location: 'Hà Nội',
   },
@@ -128,7 +128,7 @@ export const cvV1Data = {
       'Zod',
     ],
     summary:
-      'Dev chính phát triển ứng dụng mobile phục vụ hơn 500,000 người dùng trên iOS & Android — trực tiếp kéo Figma ra giao diện, tối ưu animation, xử lý thanh toán QR và monetization (IAA/IAP).',
+      'Dev chính phát triển ứng dụng mobile phục vụ 800,000+ lượt tải trên iOS & Android — trực tiếp kéo Figma ra giao diện, tối ưu animation, xử lý thanh toán QR và monetization (IAA/IAP).',
 
     detailCategories: [
       {

@@ -1,0 +1,34 @@
+{
+  "project": "portfolioMobile",
+  "updatedAt": "2026-08-10T06:02:50Z",
+  "skills": {
+    "commit": {
+      "stack": "react",
+      "count": 2,
+      "firstEmitted": "2026-08-10T06:01:52Z",
+      "lastEmitted": "2026-08-10T06:02:50Z",
+      "lastCommit": "87109f7cfaa394132a877d74b774b7698e8ce48a"
+    },
+    "gen-routes": {
+      "stack": "react",
+      "count": 1,
+      "firstEmitted": "2026-08-08T06:25:41Z",
+      "lastEmitted": "2026-08-08T06:25:41Z",
+      "lastCommit": "87109f7cfaa394132a877d74b774b7698e8ce48a"
+    },
+    "learn-project": {
+      "stack": "react",
+      "count": 2,
+      "firstEmitted": "2026-08-08T06:24:36Z",
+      "lastEmitted": "2026-08-08T06:29:17Z",
+      "lastCommit": "87109f7cfaa394132a877d74b774b7698e8ce48a"
+    },
+    "plan-feature": {
+      "stack": "react",
+      "count": 1,
+      "firstEmitted": "2026-08-08T06:40:33Z",
+      "lastEmitted": "2026-08-08T06:40:33Z",
+      "lastCommit": "87109f7cfaa394132a877d74b774b7698e8ce48a"
+    }
+  }
+}

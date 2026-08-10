@@ -75,9 +75,9 @@ export const projects: Project[] = [
   },
   {
     id: 'eatsy',
-    name: 'Eatsy — Health & Nutrition App (500k+ users)',
+    name: 'Eatsy — Health & Nutrition App (800k+ downloads)',
     description:
-      'Dev chính ứng dụng mobile về sức khỏe & dinh dưỡng phục vụ hơn 500,000 người dùng. Trực tiếp kéo Figma ra giao diện, tối ưu animation, xử lý thanh toán QR và monetization (IAA/IAP).',
+      'Dev chính ứng dụng mobile về sức khỏe & dinh dưỡng phục vụ 800,000+ lượt tải. Trực tiếp kéo Figma ra giao diện, tối ưu animation, xử lý thanh toán QR và monetization (IAA/IAP).',
     role: 'React Native Developer (Dev chính)',
     period: '08/2023 – 12/2025',
     techStack: [

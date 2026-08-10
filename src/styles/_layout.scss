@@ -1,5 +1,9 @@
 @use 'variables' as *;
 
+/* Dark is the default theme: defined on bare :root so the tokens resolve even
+   before ThemeContext stamps data-theme on <html>. [data-theme='dark'] is kept
+   as an explicit alias so toggling back to dark wins over any light rule. */
+:root,
 :root[data-theme='dark'] {
   --bg-body: radial-gradient(circle at top center, #0f172a 0%, #030712 75%);
   --color-text: #f8fafc;
@@ -11,19 +15,33 @@
   --header-border: rgba(56, 189, 248, 0.4);
   --item-bg: rgba(30, 41, 59, 0.6);
   --item-border: rgba(148, 163, 184, 0.2);
+
+  --accent: #38bdf8;
+  --accent-strong: #0284c7;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --accent-ring: rgba(56, 189, 248, 0.85);
+  --chip-bg: rgba(15, 23, 42, 0.9);
+  --chip-border: rgba(148, 163, 184, 0.35);
 }
 
 :root[data-theme='light'] {
-  --bg-body: radial-gradient(circle at top center, #f8fafc 0%, #e2e8f0 75%);
+  --bg-body: radial-gradient(circle at top center, #ffffff 0%, #e2e8f0 75%);
   --color-text: #0f172a;
   --color-muted: #475569;
-  --card-bg: #ffffff;
-  --card-border: rgba(203, 213, 225, 0.9);
-  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --header-bg: rgba(255, 255, 255, 0.9);
-  --header-border: rgba(56, 189, 248, 0.5);
-  --item-bg: #f1f5f9;
-  --item-border: #cbd5e1;
+  --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+  --card-border: rgba(15, 23, 42, 0.12);
+  --card-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --header-border: rgba(2, 132, 199, 0.35);
+  --item-bg: rgba(255, 255, 255, 0.75);
+  --item-border: rgba(15, 23, 42, 0.1);
+
+  --accent: #0284c7;
+  --accent-strong: #0369a1;
+  --accent-soft: rgba(2, 132, 199, 0.1);
+  --accent-ring: rgba(2, 132, 199, 0.85);
+  --chip-bg: rgba(255, 255, 255, 0.9);
+  --chip-border: rgba(15, 23, 42, 0.14);
 }
 
 * {
@@ -55,7 +73,7 @@ body {
 .portfolio-main {
   flex: 1;
   width: 100%;
-  padding: clamp(16px, 3vw, 36px);
+  padding: clamp(10px, 3vw, 36px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,7 +91,7 @@ body {
   width: 100%;
   background: var(--card-bg);
   border-radius: $radius-lg;
-  padding: clamp(20px, 4vw, 36px);
+  padding: clamp(14px, 4vw, 36px);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
   backdrop-filter: blur(16px);
@@ -107,36 +125,16 @@ body {
   margin-top: $spacing-md;
 }
 
-/* International Bento Grid Systems */
-.bento-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-
-  @include respond-to('lg') {
-    grid-template-columns: 1.6fr 1fr;
-    gap: 24px;
-  }
-}
-
+/* Bento grid used by the projects list. */
 .bento-projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: clamp(14px, 3.5vw, 20px);
+  align-items: start; /* Prevents expanding one card from stretching others in the row */
 
   @include respond-to('lg') {
     grid-template-columns: 1.8fr 1.2fr;
     gap: 24px;
-  }
-}
-
-.bento-grid-2col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-
-  @include respond-to('md') {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

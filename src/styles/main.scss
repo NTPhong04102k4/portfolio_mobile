@@ -1,4 +1,20 @@
 @use 'variables';
 @use 'layout';
 @use 'typography';
-@use 'portfolio';
+@use 'a11y';
+
+@use 'components/animations';
+@use 'components/utilities';
+@use 'components/header';
+@use 'components/footer';
+@use 'components/user-profile';
+@use 'components/project-card';
+@use 'components/experience';
+@use 'components/cv';
+@use 'components/skills-radar';
+@use 'components/ai-assistant';
+@use 'components/ai-stack';
+@use 'components/mobile-showcase';
+@use 'components/terminal';
+@use 'components/blog';
+@use 'components/routes';
