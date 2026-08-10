@@ -1,33 +1,18 @@
+import { NavLink } from 'react-router-dom';
+
+import { CV_PDF_URL } from '@/config/assets';
 import { useI18n } from '@/i18n/I18nContext';
+import { NAV_ITEMS } from '@/routes/paths';
 
-import type { SectionId } from './PageLayout';
+/**
+ * Hoisted so the four `NavLink`s reuse one function reference instead of
+ * allocating a fresh closure per item on every render.
+ */
+const navItemClass = ({ isActive }: { isActive: boolean }) =>
+  isActive ? 'portfolio-header__nav-item is-active' : 'portfolio-header__nav-item';
 
-type HeaderProps = {
-  activeSection?: SectionId;
-  onSelectSection?: (section: SectionId) => void;
-};
-
-export function Header({ activeSection = 'about', onSelectSection }: HeaderProps) {
+export function Header() {
   const { t } = useI18n();
-
-  const navItems: { id: SectionId; label: string; icon: string }[] = [
-    { id: 'about', label: t('nav.about'), icon: '👤' },
-    { id: 'projects', label: t('nav.projects'), icon: '💼' },
-    { id: 'experience', label: t('nav.experience'), icon: '🚀' },
-    { id: 'blog', label: t('nav.blog'), icon: '📝' },
-  ];
-
-  const handleNavClick = (id: SectionId) => {
-    if (onSelectSection) {
-      onSelectSection(id);
-    }
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -90;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
 
   return (
     <header className="portfolio-header">
@@ -40,26 +25,26 @@ export function Header({ activeSection = 'about', onSelectSection }: HeaderProps
       </div>
 
       {/* Center Navigation Bar */}
-      <nav className="portfolio-header__nav">
-        {navItems.map((item) => (
-          <button
+      <nav className="portfolio-header__nav" aria-label="Main">
+        {NAV_ITEMS.map((item) => (
+          <NavLink
             key={item.id}
-            type="button"
-            className={`portfolio-header__nav-item ${
-              activeSection === item.id ? 'is-active' : ''
-            }`}
-            onClick={() => handleNavClick(item.id)}
+            to={item.path}
+            // Without `end`, the index route would stay active on every page.
+            end={item.id === 'about'}
+            className={navItemClass}
           >
             <span className="nav-item__icon">{item.icon}</span>
-            <span className="nav-item__label">{item.label}</span>
-          </button>
+            <span className="nav-item__label">{t(item.labelKey)}</span>
+          </NavLink>
         ))}
       </nav>
 
       {/* Right Controls & Actions */}
+      {/* Theme + language toggles are intentionally not mounted — see HeaderControls. */}
       <div className="portfolio-header__right">
         <a
-          href="/cv-phong-react-native.pdf"
+          href={CV_PDF_URL}
           className="portfolio-header__cv-button"
           target="_blank"
           rel="noreferrer"
