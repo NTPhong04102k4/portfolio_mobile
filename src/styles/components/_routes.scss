@@ -1,0 +1,76 @@
+@use '../variables' as *;
+
+// Spacing between stacked blocks inside a route page.
+// Replaces the inline `style={{ marginTop }}` the single-page layout used.
+.route-block-gap {
+  margin-top: $spacing-xl;
+
+  &--bottom {
+    margin-top: 0;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Shared shell for the 404 and route-error screens.
+.route-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xl $spacing-md;
+  text-align: center;
+
+  // Used when rendered outside PageLayout (RouteErrorPage), where there is
+  // no header/footer to provide vertical rhythm.
+  &--standalone {
+    min-height: 100vh;
+    justify-content: center;
+    background: $color-bg;
+    color: $color-text;
+  }
+
+  &__code {
+    margin: 0;
+    font-size: clamp(3rem, 12vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: $color-accent;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    color: $color-text;
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 46ch;
+    color: $color-muted;
+  }
+
+  &__path {
+    padding: $spacing-xs $spacing-sm;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-surface;
+    color: $color-subtle;
+    font-size: 0.875rem;
+    word-break: break-all;
+  }
+
+  &__link {
+    margin-top: $spacing-sm;
+    padding: $spacing-xs $spacing-md;
+    border: 1px solid $color-border-glow;
+    border-radius: $radius-pill;
+    background: $color-accent-soft;
+    color: $color-accent;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $color-surface-hover;
+    }
+  }
+}

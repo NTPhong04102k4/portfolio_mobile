@@ -1,0 +1,112 @@
+@use '../variables' as *;
+
+.mobile-showcase {
+  margin-top: $spacing-md;
+  padding-top: $spacing-sm;
+  border-top: 1px solid var(--item-border);
+}
+
+.mobile-showcase__header h3 {
+  margin: 0 0 4px;
+}
+
+.mobile-showcase__header p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.mobile-showcase__devices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.mobile-showcase__device {
+  position: relative;
+  width: 120px;
+  height: 220px;
+}
+
+.mobile-showcase__frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  padding: 8px;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  border: 2px solid rgba(148, 163, 184, 0.6);
+  box-shadow: var(--card-shadow);
+}
+
+.mobile-showcase__frame--widget {
+  width: 160px;
+  height: 110px;
+  border-radius: 22px;
+}
+
+.mobile-showcase__screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px;
+  font-size: 0.7rem;
+}
+
+.mobile-showcase__screen--onboarding {
+  background: linear-gradient(180deg, #38bdf8, #0f172a);
+}
+
+.mobile-showcase__screen--journal {
+  background: linear-gradient(180deg, #4ade80, #065f46);
+}
+
+.mobile-showcase__screen--widget {
+  background: radial-gradient(circle at top, #facc15, #0f172a);
+}
+
+.mobile-showcase__label {
+  margin: 0;
+  color: #f9fafb;
+}
+
+.mobile-showcase__bottomsheet {
+  margin-top: $spacing-sm;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-showcase__sheet {
+  width: min(420px, 100%);
+  padding: 8px 12px 10px;
+  border-radius: 16px;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.mobile-showcase__sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: $radius-pill;
+  background: rgba(148, 163, 184, 0.8);
+  margin: 0 auto 6px;
+}
+
+.mobile-showcase__sheet-title {
+  margin: 0 0 2px;
+  font-size: 0.85rem;
+}
+
+.mobile-showcase__sheet-text {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}

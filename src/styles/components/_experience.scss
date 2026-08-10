@@ -6,14 +6,16 @@
   }
 }
 
+/* ── Tech chips ────────────────────────────────────────────────
+   No backdrop-filter here: chips render dozens of times per page and
+   each blurred layer costs a separate GPU composite on mobile. */
 .tech-chip {
   padding: 4px 10px;
   border-radius: $radius-pill;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--chip-border);
+  background: var(--chip-bg);
   font-size: 0.8rem;
-  color: $color-muted;
-  backdrop-filter: blur(10px);
+  color: var(--color-muted);
   transition:
     transform 0.18s ease-out,
     box-shadow 0.18s ease-out,
@@ -22,15 +24,10 @@
     color 0.15s ease-out;
 
   &:hover {
-    color: $color-text;
-    border-color: rgba(56, 189, 248, 0.9);
-    background: linear-gradient(
-      135deg,
-      rgba(15, 23, 42, 0.98),
-      rgba(15, 23, 42, 0.9)
-    );
+    color: var(--color-text);
+    border-color: var(--accent-ring);
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
+    box-shadow: var(--card-shadow);
   }
 
   &[data-skill='Zustand'],
@@ -59,16 +56,170 @@
   display: inline-block;
   padding: 3px 10px;
   border-radius: $radius-pill;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
   font-size: 0.75rem;
   color: var(--color-muted);
   font-weight: 500;
-  transition: all 0.18s ease-out;
+  transition:
+    color 0.18s ease-out,
+    background 0.18s ease-out,
+    border-color 0.18s ease-out;
 
   &:hover {
     color: var(--color-text);
-    border-color: rgba(56, 189, 248, 0.7);
-    background: rgba(56, 189, 248, 0.1);
+    border-color: var(--accent-ring);
+    background: var(--accent-soft);
+  }
+}
+
+/* ── Experience Block ──────────────────────────────────────── */
+.experience-block {
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.25s ease-out;
+
+  &:hover {
+    border-color: var(--accent-ring);
+  }
+
+  & + & {
+    margin-top: $spacing-md;
+  }
+}
+
+.experience-block--previous {
+  border-color: var(--item-border);
+}
+
+.experience-block__header {
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 4px 0 6px;
+    color: var(--color-text);
+  }
+}
+
+.experience-block__tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.experience-summary {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* ── Detail Categories Grid ────────────────────────────────── */
+.detail-categories {
+  display: grid;
+  gap: 8px;
+  margin-top: $spacing-sm;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.detail-category {
+  border-radius: $radius-md;
+  background: var(--item-bg);
+  border: 1px solid var(--item-border);
+  overflow: hidden;
+  transition:
+    border-color 0.22s ease-out,
+    background 0.22s ease-out,
+    box-shadow 0.22s ease-out;
+
+  &:hover {
+    border-color: var(--accent-ring);
+  }
+
+  &--open {
+    border-color: var(--accent-ring);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.08);
+  }
+}
+
+.detail-category__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--accent-soft);
+  }
+}
+
+.detail-category__icon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.detail-category__title {
+  flex: 1;
+  text-align: left;
+}
+
+.detail-category__caret {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  transition: transform 0.2s ease;
+}
+
+.detail-category__items {
+  margin: 0;
+  padding: 0 14px 12px 38px;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 4px 0 4px 16px;
+    font-size: 0.84rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 5px;
+      height: 5px;
+      border-radius: $radius-pill;
+      background: var(--accent-ring);
+    }
+  }
+}
+
+/* Float animation for highlighted project cards (see _project-card.scss). */
+@keyframes floatGlowPseudo {
+  0% {
+    box-shadow: 0 20px 45px rgba(56, 189, 248, 0.2);
+  }
+  100% {
+    box-shadow: 0 30px 70px rgba(56, 189, 248, 0.45);
   }
 }

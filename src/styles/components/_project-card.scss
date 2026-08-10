@@ -6,7 +6,10 @@
   background: var(--item-bg);
   border: 1px solid var(--item-border);
   box-shadow: var(--card-shadow);
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative; /* For pseudo-elements */
   z-index: 1;
 
@@ -89,7 +92,11 @@
   font-weight: 600;
   text-decoration: none;
   margin-top: 12px;
-  transition: all 0.2s ease-out;
+  transition:
+    background 0.2s ease-out,
+    border-color 0.2s ease-out,
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
 
   &:hover {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.25));
@@ -154,7 +161,9 @@
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
 
   &:hover {
     background: rgba(56, 189, 248, 0.15);
@@ -215,57 +224,5 @@
   &::before {
     opacity: 1;
     animation: floatGlowPseudo 2.4s ease-in-out infinite alternate;
-  }
-}
-
-/* Horizontal scroll carousel using Framer Motion */
-
-.hscroll-carousel {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 12px 24px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-.hscroll-carousel__item {
-  flex: 0 0 260px;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center;
-  will-change: transform, opacity;
-}
-
-.hscroll-carousel__card {
-  width: 100%;
-  min-height: 56px;
-  padding: 10px 16px;
-  border-radius: $radius-md;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.9);
-  color: $color-text;
-  font: inherit;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition:
-    border-color 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    background 0.22s ease-out;
-
-  &:hover {
-    border-color: rgba(56, 189, 248, 0.65);
-    background: rgba(15, 23, 42, 0.95);
-  }
-
-  &.is-active {
-    border-color: rgba(56, 189, 248, 0.9);
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.92));
   }
 }
