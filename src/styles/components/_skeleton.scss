@@ -1,0 +1,90 @@
+@use '../variables' as *;
+
+/**
+ * Loading skeleton for lazily-loaded routes.
+ *
+ * The shimmer is a moving `background-position` on a gradient — it never
+ * touches layout or hit testing, so it cannot cause the reflow/jitter that a
+ * transform-based animation would. Colours come from the theme tokens, so the
+ * bars sit correctly on both the dark and light backgrounds.
+ *
+ * `prefers-reduced-motion` is handled globally in `_a11y.scss`, which collapses
+ * the animation to a single near-instant iteration — the bars stay visible as
+ * flat placeholders rather than disappearing.
+ */
+.skeleton-bar {
+  border-radius: $radius-sm;
+  background-color: var(--item-bg);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(148, 163, 184, 0.18) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeletonShimmer 1.4s ease-in-out infinite;
+
+  &--title {
+    width: min(60%, 320px);
+    height: 28px;
+  }
+
+  &--subtitle {
+    width: min(40%, 220px);
+    height: 14px;
+    margin-top: 10px;
+  }
+
+  &--panel {
+    width: 100%;
+    height: 180px;
+    border-radius: $radius-md;
+  }
+
+  &--line {
+    width: 100%;
+    height: 12px;
+  }
+
+  &--short {
+    width: 70%;
+  }
+
+  &--chip {
+    width: 84px;
+    height: 26px;
+    border-radius: $radius-pill;
+  }
+
+  /* Matches the radar chart's fixed height so swapping in the real canvas
+     does not shift everything below it. */
+  &--chart {
+    width: 100%;
+    height: 320px;
+    border-radius: $radius-md;
+  }
+}
+
+.route-skeleton__rows {
+  display: grid;
+  gap: 10px;
+  margin-top: $spacing-md;
+}
+
+.route-skeleton__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: $spacing-md;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 150% 0;
+  }
+
+  100% {
+    background-position: -50% 0;
+  }
+}
