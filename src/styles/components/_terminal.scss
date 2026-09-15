@@ -89,3 +89,52 @@
     border-color: $color-accent;
   }
 }
+
+/* `pre`'s padding/font-size live here instead of react-syntax-highlighter's
+   inline `customStyle`, so the `sm` override below can actually win — inline
+   styles would otherwise beat any external rule regardless of specificity. */
+.terminal-window__body {
+  position: relative;
+
+  pre {
+    padding: 16px;
+    font-size: 13px;
+  }
+}
+
+.terminal-window__scroll-hint {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .terminal-window__body {
+    pre {
+      padding: 12px;
+      font-size: 12px;
+    }
+
+    /* Fade the code's right edge so a line cut off mid-scroll still reads as
+       "more this way" rather than as clipped/broken content. */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 28px;
+      background: linear-gradient(to right, transparent, #090d16);
+      pointer-events: none;
+    }
+  }
+
+  .terminal-window__scroll-hint {
+    display: block;
+    margin: 0;
+    padding: 6px 12px 10px;
+    font-size: 0.72rem;
+    color: $color-muted;
+    text-align: center;
+    background: #090d16;
+    border-radius: 0 0 14px 14px;
+  }
+}

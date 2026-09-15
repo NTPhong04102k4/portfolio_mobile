@@ -91,5 +91,9 @@
   p {
     margin: 0 0 4px;
     font-size: 0.9rem;
+
+    @include respond-to('lg') {
+      max-width: 68ch;
+    }
   }
 }

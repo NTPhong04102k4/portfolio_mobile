@@ -116,6 +116,10 @@
   font-size: 0.95rem;
   line-height: 1.6;
   margin-top: 8px;
+
+  @include respond-to('lg') {
+    max-width: 68ch;
+  }
 }
 
 /* ── Detail Categories Grid ────────────────────────────────── */
