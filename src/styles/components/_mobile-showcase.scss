@@ -75,8 +75,13 @@
 
 .mobile-showcase__bottomsheet {
   margin-top: $spacing-sm;
+  padding-block: 28px;
   display: flex;
   justify-content: center;
+  /* The card drags with elastic overshoot as a "peek" gesture. Without a
+     clipped, padded track it can ride far enough on a fast drag to poke past
+     its own box — even off the bottom of a phone screen mid-drag. */
+  overflow: hidden;
 }
 
 .mobile-showcase__sheet {
