@@ -11,7 +11,7 @@ import {
   Wallet,
   Wrench,
   Zap,
-} from 'lucide-react';
+} from 'lucide-react'
 
 export const cvV1Data = {
   intro:
@@ -230,10 +230,14 @@ export const cvV1Data = {
     shortTerm:
       'Làm chủ toàn bộ hệ sinh thái Mobile bao gồm React Native, Flutter và đặc biệt là Native Development (Swift & Kotlin). Tiếp tục nâng cao chuyên môn về Bảo mật di động (IAM, Biometrics) và tối ưu hóa hệ thống định vị bản đồ.',
     longTerm:
-      'Hướng tới vị trí Lead Mobile Architect / Senior Mobile Engineer, dẫn dắt các dự án Mobile Enterprise có quy mô lớn, đòi hỏi kiến trúc Native chuyên sâu và bảo mật cao.',
+      'Hướng tới vị trí Lead Mobile Architect /  Mobile Engineer, dẫn dắt các dự án Mobile Enterprise có quy mô lớn, đòi hỏi kiến trúc Native chuyên sâu và bảo mật cao.',
   },
   education: 'Trường Đại Học Giao Thông Vận Tải (UTC)',
-  hobbies: ['Tìm hiểu Native Tech (Swift/Kotlin)', 'Lập trình Mobile & AI', 'Chia sẻ kiến thức công nghệ'],
-};
+  hobbies: [
+    'Tìm hiểu Native Tech (Swift/Kotlin)',
+    'Lập trình Mobile & AI',
+    'Chia sẻ kiến thức công nghệ',
+  ],
+}
 
-export type CvV1Data = typeof cvV1Data;
+export type CvV1Data = typeof cvV1Data

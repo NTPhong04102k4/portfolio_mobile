@@ -1,14 +1,14 @@
-import { Building2, MapPin } from 'lucide-react';
+import { Building2, MapPin } from 'lucide-react'
 
-import { ICON_SIZE } from '@/config/icons';
-import { cvV1Data } from '@/content/cv_v1.parsed';
+import { ICON_SIZE } from '@/config/icons'
+import { cvV1Data } from '@/content/cv_v1.parsed'
 
 export function UserProfile() {
   return (
     <div className="user-profile">
       <div className="user-profile__status-badge">
         <span className="pulse-dot" />
-        <span>Sẵn sàng cho vị trí Senior Mobile Engineer</span>
+        <span>Sẵn sàng cho vị trí Middle Mobile Engineer</span>
       </div>
 
       <h1 className="user-profile__title">
@@ -23,5 +23,5 @@ export function UserProfile() {
 
       <p className="user-profile__intro">{cvV1Data.intro}</p>
     </div>
-  );
+  )
 }
