@@ -6,6 +6,24 @@
   border-radius: $radius-md;
   background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), #020617);
   border: 1px solid rgba(30, 64, 175, 0.9);
+
+  /* Below `lg` the chart already fills the card's width edge to edge, so
+     stacking reads fine. Above it, a 420px-capped chart under a header left
+     the right two-thirds of a full-width card empty — putting the two side
+     by side uses that width instead of leaving it dead. */
+  @include respond-to('lg') {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+    padding: $spacing-md;
+  }
+}
+
+.skills-radar__header {
+  @include respond-to('lg') {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .skills-radar__header h3 {
@@ -17,9 +35,19 @@
   margin: 0 0 6px;
   font-size: 0.85rem;
   color: $color-muted;
+
+  @include respond-to('lg') {
+    max-width: 60ch;
+  }
 }
 
 .skills-radar__chart {
   width: 100%;
   max-width: 420px;
+  margin-inline: auto;
+
+  @include respond-to('lg') {
+    flex: 0 0 380px;
+    margin-inline: 0;
+  }
 }

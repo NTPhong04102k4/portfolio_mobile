@@ -177,8 +177,6 @@ export function NativeCodeShowcase() {
             showLineNumbers
             customStyle={{
               margin: 0,
-              padding: '16px',
-              fontSize: '13px',
               lineHeight: '1.6',
               background: '#090d16',
               borderRadius: '0 0 14px 14px',
@@ -187,6 +185,10 @@ export function NativeCodeShowcase() {
             {current.code}
           </SyntaxHighlighter>
         </div>
+
+        {/* Lines run wider than a phone screen — this only shows below `sm`,
+            where `.terminal-window__body` also grows a scroll-fade edge. */}
+        <p className="terminal-window__scroll-hint">Vuốt ngang để xem toàn bộ code →</p>
       </div>
     </section>
   );
