@@ -53,8 +53,9 @@ export function MobileShowcase() {
         <motion.div
           className="mobile-showcase__sheet"
           drag="y"
-          dragConstraints={{ top: -40, bottom: 40 }}
-          dragElastic={0.2}
+          dragConstraints={{ top: -24, bottom: 24 }}
+          dragElastic={0.12}
+          dragMomentum={false}
         >
           <div className="mobile-showcase__sheet-handle" />
           <p className="mobile-showcase__sheet-title">Gesture-based bottom sheet (web demo)</p>
